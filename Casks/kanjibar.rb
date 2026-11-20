@@ -7,7 +7,12 @@ cask "kanjibar" do
   desc "JLPT N3 kanji and vocabulary widget for the macOS menu bar"
   homepage "https://github.com/baguskna/mac_kanji_toggle"
 
-  depends_on macos: ">= :big_sur"
+  livecheck do
+    url "https://github.com/baguskna/mac_kanji_toggle"
+    strategy :github_latest
+  end
+
+  depends_on macos: :big_sur
 
   app "KanjiBar.app"
 
