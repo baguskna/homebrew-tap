@@ -18,15 +18,6 @@ cask "kanjibar" do
 
   uninstall quit: "com.baguskna.kanjibar"
 
-  # Releases are ad-hoc signed (no Developer ID yet), so the downloaded bundle
-  # carries a quarantine flag and macOS would refuse its first launch. Clear it
-  # after install. If releases are ever notarized, this block can be deleted.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/KanjiBar.app"],
-                   sudo: false
-  end
-
   zap trash: [
     "~/Library/Application Support/KanjiBar",
   ]
