@@ -23,7 +23,10 @@ cask "kanjibar" do
   # launch, so clear it after the app lands in /Applications. Delete this once
   # releases are Developer-ID signed and notarized.
   postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/KanjiBar.app"]
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{appdir}}/KanjiBar.app"],
+        writable_paths: ["KanjiBar.app"],
+        writable_base: :appdir
   end
 
   zap trash: [
